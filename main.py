@@ -1,6 +1,15 @@
+import subprocess
+import sys
+
+try:
+    import joblib
+except ModuleNotFoundError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "joblib"])
+    import joblib
+    
 import streamlit as st
 import pandas as pd
-import joblib
+
 
 # Загружаем пайплайн
 model = joblib.load("rf_pipeline.pkl")
